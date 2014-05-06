@@ -4,16 +4,23 @@ import (
 	"github.com/gnewton/jianGoMeSHi"
         "log"
         "sort"
-//        "strings"
+        "strings"
 )
 
 
 const DESCRIPTOR = "descriptor"
 const QUALIFIER = "qualifier"
 const SUPPLEMENTAL = "supplemental"
+const PHARMACOLOGICAL = "pharmacological"
 const TREE = "tree"
 
-var NOUNS = []string{DESCRIPTOR, QUALIFIER, SUPPLEMENTAL, TREE}
+var NOUNS = []string{
+	DESCRIPTOR, 
+	QUALIFIER, 
+	SUPPLEMENTAL, 
+	TREE,
+	PHARMACOLOGICAL,
+}
 var allNouns []jianGoMeSHi.IdEntry
 
 var descMap map[string]*jianGoMeSHi.DescriptorRecord
@@ -26,6 +33,9 @@ var suppSlice  []*jianGoMeSHi.IdEntry
 
 var qualMap map[string]*jianGoMeSHi.QualifierRecord
 var qualSlice  []*jianGoMeSHi.IdEntry
+
+var pharmMap map[string]*jianGoMeSHi.PharmacologicalAction
+var pharmSlice  []*jianGoMeSHi.IdEntry
 
 var root *jianGoMeSHi.Node
 var treeMap map[string]*jianGoMeSHi.Node
@@ -74,30 +84,65 @@ func loadData()(error){
 	var err error
 	log.Println("Start Loading MeSH XML...")
 
+	////////////////
 	log.Println("\tLoading Supplemental MeSH XML from file: ", SUPPLEMENTAL_XML_FILE)
 	suppMap, err = jianGoMeSHi.SupplementalMapFromFile(SUPPLEMENTAL_XML_FILE)
 	if err != nil{
 		return err
 	}
 	index := 0
-
 	suppSlice = make([]*jianGoMeSHi.IdEntry, len(suppMap))
-
 	for supp := range suppMap{
 		newEntry := new(jianGoMeSHi.IdEntry)
 		newEntry.Id = suppMap[supp].SupplementalRecordUI
 		newEntry.Url = BASE_URL + "/" + SUPPLEMENTAL + "/" + newEntry.Id
 		suppSlice[index] = newEntry
 		index += 1
+
+		for i:=0; i<len(suppMap[supp].HeadingMappedToList.HeadingMappedTo); i++{
+			descriptorReferredTo := suppMap[supp].HeadingMappedToList.HeadingMappedTo[i].DescriptorReferredTo
+			descriptorReferredTo.Url = BASE_URL + "/" + DESCRIPTOR + "/" + strings.TrimLeft(descriptorReferredTo.DescriptorUI, "*")
+		}
+	}
+
+	////////////////
+	log.Println("\tLoading Pharmacological Action MeSH XML from file: ", PHARMACOLOGICAL_XML_FILE)
+	pharmMap, err = jianGoMeSHi.PharmacologicalMapFromFile(PHARMACOLOGICAL_XML_FILE)
+	if err != nil{
+		return err
+	}
+	index = 0
+	pharmSlice = make([]*jianGoMeSHi.IdEntry, len(pharmMap))
+	for pharm := range pharmMap{
+		newEntry := new(jianGoMeSHi.IdEntry)
+		newEntry.Id = pharmMap[pharm].DescriptorReferredTo.DescriptorUI
+		newEntry.Url = BASE_URL + "/" + PHARMACOLOGICAL + "/" + newEntry.Id
+		pharmSlice[index] = newEntry
+		index += 1
+
+		pharmMap[pharm].DescriptorReferredTo.Url = BASE_URL + "/" + DESCRIPTOR + "/" + pharm
+		//if pharmMap[pharm].PharmacologicalActionSubstanceList.Substance != nil
+		{
+			for i:=0; i<len(pharmMap[pharm].PharmacologicalActionSubstanceList.Substance); i++{
+				//for _, substance := range pharmMap[pharm].PharmacologicalActionSubstanceList.Substance{
+				substance := &pharmMap[pharm].PharmacologicalActionSubstanceList.Substance[i]
+				if(strings.Index(substance.RecordUI, "C") == 0){
+					substance.SupplementalUrl = BASE_URL + "/" + SUPPLEMENTAL + "/" + substance.RecordUI
+				}else{
+					substance.DescriptorUrl = BASE_URL + "/" + DESCRIPTOR + "/" + substance.RecordUI
+
+				}
+			}
+		}
 	}
 
 
+	////////////////
 	log.Println("\tLoading Qualifier MeSH XML from file:", QUALIFIER_XML_FILE)
 	qualMap, err = jianGoMeSHi.QualifierMapFromFile(QUALIFIER_XML_FILE)
 	if err != nil{
 		return err
 	}
-
 	qualSlice = make([]*jianGoMeSHi.IdEntry, len(qualMap))
 	index = 0
 	for qual := range qualMap{
@@ -108,6 +153,8 @@ func loadData()(error){
 		index += 1
 	}
 
+
+	////////////////
 	log.Println("\tLoading Descriptor MeSH XML from file: ", DESCRIPTOR_XML_FILE)
 	descMap, err = jianGoMeSHi.DescriptorMapFromFile(DESCRIPTOR_XML_FILE)
 	if err != nil{
@@ -137,6 +184,7 @@ func loadData()(error){
 	sort.Sort(ById(descSlice))
 	sort.Sort(ById(qualSlice))
 	sort.Sort(ById(suppSlice))
+	sort.Sort(ById(pharmSlice))
 
 	root = jianGoMeSHi.MakeTree(descMap)
 	root.Traverse(0, AddUrlInfo)

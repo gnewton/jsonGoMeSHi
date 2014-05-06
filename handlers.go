@@ -5,6 +5,8 @@ import (
         "log"
 )
 
+var COPYRIGHT_AND_LEGAL = MESH_COPYRIGHT + ";  " + MESH_OWNER
+
 func GetAll(w rest.ResponseWriter, req *rest.Request) {
 	if req.Request.Method != "GET"{
 		return
@@ -22,6 +24,7 @@ func GetAllDescriptors(w rest.ResponseWriter, req *rest.Request) {
 }
 
 
+
 func GetDescriptor(w rest.ResponseWriter, req *rest.Request) {
 	if req.Request.Method != "GET"{
 		return
@@ -31,11 +34,7 @@ func GetDescriptor(w rest.ResponseWriter, req *rest.Request) {
 	//descriptor, ok := descMap[descriptorUI]
 	_, ok := descMap[descriptorUI]
 	if ok{
-		//var descriptorWithUrl jianGoMeSHi.DescriptorRecord
-		
-		//descriptorWithUrl = *descriptor
-		//w.WriteJson(populateWithUrl(descriptor, "http://localhost:8080/descriptor"))
-		w.WriteJson(descMap2[descriptorUI])
+		w.WriteJson(newEnvelope(descMap2[descriptorUI]))
 	}else{
 		rest.NotFound(w,req)
 	}
@@ -58,7 +57,7 @@ func GetSupplemental(w rest.ResponseWriter, req *rest.Request) {
 	
 	supplemental, ok := suppMap[supplementalUI]
 	if ok{
-		w.WriteJson(supplemental)
+		w.WriteJson(newEnvelope(supplemental))
 	}else{
 		rest.NotFound(w,req)
 	}
@@ -82,7 +81,29 @@ func GetQualifier(w rest.ResponseWriter, req *rest.Request) {
 	
 	qualifier, ok := qualMap[qualifierUI]
 	if ok{
-		w.WriteJson(qualifier)
+		w.WriteJson(newEnvelope(qualifier))
+	}else{
+		rest.NotFound(w,req)
+	}
+}
+
+func GetAllPharmacologicals(w rest.ResponseWriter, req *rest.Request) {
+	if req.Request.Method != "GET"{
+		return
+	}
+	w.WriteJson(pharmSlice)
+}
+
+
+func GetPharmacological(w rest.ResponseWriter, req *rest.Request) {
+	if req.Request.Method != "GET"{
+		return
+	}
+	pharmUI := req.PathParam("id")
+	
+	pharm, ok := pharmMap[pharmUI]
+	if ok{
+		w.WriteJson(newEnvelope(pharm))
 	}else{
 		rest.NotFound(w,req)
 	}
@@ -98,7 +119,7 @@ func GetTrees(w rest.ResponseWriter, req *rest.Request) {
 	//w.WriteJson(root)
 	//log.Println(root)
 	log.Printf("%+v\n", root)
-	w.WriteJson(root.Children)
+	w.WriteJson(newEnvelope(root.Children))
 	//log.Println(root.Children["D02"].Children["705"])
 	//w.WriteJson("hello")
 }
@@ -128,11 +149,28 @@ func GetTree(w rest.ResponseWriter, req *rest.Request) {
 	if req.PathParam("g") != ""{
 		treeNumber = treeNumber + "." + req.PathParam("g")
 	}
+	if req.PathParam("h") != ""{
+		treeNumber = treeNumber + "." + req.PathParam("h")
+	}
+
 	
 	node, ok := treeMap[treeNumber]
 	if ok{
-		w.WriteJson(node)
+		w.WriteJson(newEnvelope(node))
 	}else{
 		rest.NotFound(w,req)
 	}
+}
+
+var meta =  Meta{
+		CopyrightAndLegal: COPYRIGHT_AND_LEGAL,
+		CopyrightAndLegalUrl: NLM_TERMS_URL,
+		MeSHVersion: MESH_VERSION,
+	}
+
+func newEnvelope(record interface{}) *Envelope {
+	env := new(Envelope)
+	env.Meta = meta
+	env.Data = record
+	return env;
 }
