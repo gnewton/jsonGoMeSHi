@@ -50,6 +50,14 @@ type Paging struct{
 	PrevioustPageUrl string `json:"previousPageUrl,omitempty"`
 }
 
+func (desc *LocalDesc) setQualifierUrls(baseUrl string){
+	if desc.AllowableQualifiersList.AllowableQualifier != nil{
+		for i:=0; i<len(desc.AllowableQualifiersList.AllowableQualifier); i++{
+			qualifierReferredTo := desc.AllowableQualifiersList.AllowableQualifier[i].QualifierReferredTo
+			qualifierReferredTo.Url = baseUrl + "/" + QUALIFIER + "/" + qualifierReferredTo.QualifierUI
+		}
+	}
+}
 
 func (desc *LocalDesc) setTreeNumberUrls(baseUrl string){
 	if desc.TreeNumberList.TreeNumber != nil{
@@ -92,15 +100,15 @@ func loadData()(error){
 	}
 	index := 0
 	suppSlice = make([]*jianGoMeSHi.IdEntry, len(suppMap))
-	for supp := range suppMap{
+	for _,supp := range suppMap{
 		newEntry := new(jianGoMeSHi.IdEntry)
-		newEntry.Id = suppMap[supp].SupplementalRecordUI
+		newEntry.Id = supp.SupplementalRecordUI
 		newEntry.Url = BASE_URL + "/" + SUPPLEMENTAL + "/" + newEntry.Id
 		suppSlice[index] = newEntry
 		index += 1
 
-		for i:=0; i<len(suppMap[supp].HeadingMappedToList.HeadingMappedTo); i++{
-			descriptorReferredTo := suppMap[supp].HeadingMappedToList.HeadingMappedTo[i].DescriptorReferredTo
+		for i:=0; i<len(supp.HeadingMappedToList.HeadingMappedTo); i++{
+			descriptorReferredTo := supp.HeadingMappedToList.HeadingMappedTo[i].DescriptorReferredTo
 			descriptorReferredTo.Url = BASE_URL + "/" + DESCRIPTOR + "/" + strings.TrimLeft(descriptorReferredTo.DescriptorUI, "*")
 		}
 	}
@@ -145,9 +153,9 @@ func loadData()(error){
 	}
 	qualSlice = make([]*jianGoMeSHi.IdEntry, len(qualMap))
 	index = 0
-	for qual := range qualMap{
+	for _,qual := range qualMap{
 		newEntry := new(jianGoMeSHi.IdEntry)
-		newEntry.Id = qualMap[qual].QualifierUI
+		newEntry.Id = qual.QualifierUI
 		newEntry.Url = BASE_URL + "/" + QUALIFIER + "/" + newEntry.Id
 		qualSlice[index] = newEntry
 		index += 1
@@ -167,15 +175,16 @@ func loadData()(error){
 	index = 0
 	descMap2 = make(map[string]*LocalDesc)
 
-	for desc := range descMap{
+	for _,desc := range descMap{
 		newEntry := new(jianGoMeSHi.IdEntry)
-		descriptorRecord := descMap[desc]
+		descriptorRecord := desc
 		var localDesc = (*LocalDesc)(descriptorRecord)
 		localDesc.setDescUrls(BASE_URL)
 		localDesc.setTreeNumberUrls(BASE_URL)
+		localDesc.setQualifierUrls(BASE_URL)
 		
-		descMap2[desc] = localDesc
-		newEntry.Id = descMap[desc].DescriptorUI
+		descMap2[desc.DescriptorUI] = localDesc
+		newEntry.Id = desc.DescriptorUI
 		newEntry.Url = BASE_URL + "/" + DESCRIPTOR + "/" + newEntry.Id
 		descSlice[index] = newEntry
 		index += 1
@@ -198,7 +207,7 @@ func loadData()(error){
 		allNouns[i].Url = BASE_URL + "/" + noun
 	}
 
-
+	descMap = nil
 	return nil
 }
 

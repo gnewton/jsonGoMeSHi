@@ -11,7 +11,7 @@ func GetAll(w rest.ResponseWriter, req *rest.Request) {
 	if req.Request.Method != "GET"{
 		return
 	}
-	w.WriteJson(allNouns)
+	w.WriteJson(newEnvelope(allNouns))
 }
 
 
@@ -20,7 +20,7 @@ func GetAllDescriptors(w rest.ResponseWriter, req *rest.Request) {
 	if req.Request.Method != "GET"{
 		return
 	}
-	w.WriteJson(descSlice)
+	w.WriteJson(newEnvelope(descSlice))
 }
 
 
@@ -32,7 +32,7 @@ func GetDescriptor(w rest.ResponseWriter, req *rest.Request) {
 	descriptorUI := req.PathParam("id")
 
 	//descriptor, ok := descMap[descriptorUI]
-	_, ok := descMap[descriptorUI]
+	_, ok := descMap2[descriptorUI]
 	if ok{
 		w.WriteJson(newEnvelope(descMap2[descriptorUI]))
 	}else{
@@ -45,7 +45,7 @@ func GetAllSupplementals(w rest.ResponseWriter, req *rest.Request) {
 	if req.Request.Method != "GET"{
 		return
 	}
-	w.WriteJson(suppSlice)
+	w.WriteJson(newEnvelope(suppSlice))
 }
 
 
@@ -69,7 +69,7 @@ func GetAllQualifiers(w rest.ResponseWriter, req *rest.Request) {
 	if req.Request.Method != "GET"{
 		return
 	}
-	w.WriteJson(qualSlice)
+		w.WriteJson(newEnvelope(qualSlice))
 }
 
 
@@ -91,7 +91,7 @@ func GetAllPharmacologicals(w rest.ResponseWriter, req *rest.Request) {
 	if req.Request.Method != "GET"{
 		return
 	}
-	w.WriteJson(pharmSlice)
+	w.WriteJson(newEnvelope(pharmSlice))
 }
 
 
@@ -165,7 +165,7 @@ func GetTree(w rest.ResponseWriter, req *rest.Request) {
 var meta =  Meta{
 		CopyrightAndLegal: COPYRIGHT_AND_LEGAL,
 		CopyrightAndLegalUrl: NLM_TERMS_URL,
-		MeSHVersion: MESH_VERSION,
+		MeSH_Version: MESH_VERSION,
 	}
 
 func newEnvelope(record interface{}) *Envelope {

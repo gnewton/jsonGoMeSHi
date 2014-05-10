@@ -28,18 +28,23 @@ const MAX_PAGE_SIZE = 100
 //
 const DESCRIPTOR_XML_FILE = "testData/desc2014_29records.xml.bz2"
 //const DESCRIPTOR_XML_FILE = "/home/newtong/2014/mesh/desc2014.xml.bz2"
+//const DESCRIPTOR_XML_FILE = "/home/gnewton/mesh/desc2014.xml.bz2"
 
 const QUALIFIER_XML_FILE = "testData/qual2014_8records.xml.bz2"
 //const QUALIFIER_XML_FILE = "/home/newtong/2014/mesh/qual2014.xml.bz2"
+//const QUALIFIER_XML_FILE = "/home/gnewton/mesh/qual2014.xml.bz2"
 
 const SUPPLEMENTAL_XML_FILE = "testData/supp2014_4records.xml"
 //const SUPPLEMENTAL_XML_FILE = "/home/newtong/2014/mesh/supp2014.xml.bz2"
+//const SUPPLEMENTAL_XML_FILE = "/home/gnewton/mesh/supp2014.xml.bz2"
 
 const PHARMACOLOGICAL_XML_FILE = "testData/pa2014_8records.xml"
-//const PHARMACOLOGICAL_XML_FILE = "/home/newtong/2014/mesh/pa2014.xml"
+//const PHARMACOLOGICAL_XML_FILE = "/home/newtong/2014/mesh/pa2014.xml.bz2"
+//const PHARMACOLOGICAL_XML_FILE = "/home/gnewton/mesh/pa2014.xml.bz2"
 
 func main() {
 	URL_HOST,_ := os.Hostname()
+	//URL_HOST := "s2.semanticscience.org"
 	BASE_URL ="http://" + URL_HOST + ":" + PORT + PATH
 	log.Println("Base URL:", BASE_URL)
 	runtime.GOMAXPROCS(runtime.NumCPU())
