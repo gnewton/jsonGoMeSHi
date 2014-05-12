@@ -1,0 +1,137 @@
+{
+
+    "Meta": {
+        "MeSH_Version": "2014 MeSH",
+        "CopyrightAndLegal": "Copyright U.S. National Library of Medicine; U.S. National Library of Medicine is the creator, maintainer, and provider of this data",
+        "CopyrightAndLegalUrl": "https://www.nlm.nih.gov/mesh/termscon.html"
+    },
+    "Data": {
+        "QualifierUI": "Q000096",
+        "QualifierName": "biosynthesis",
+        "DateCreated": {
+            "Year": "1973",
+            "Month": "12",
+            "Day": "27"
+        },
+        "DateRevised": {
+            "Year": "2003",
+            "Month": "07",
+            "Day": "22"
+        },
+        "DateEstablished": {
+            "Year": "1966",
+            "Month": "01",
+            "Day": "01"
+        },
+        "ActiveMeSHYearList": [
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014"
+        ],
+        "Annotation": "subhead only; includes \"formation\" & \"production\" of substances by living tissue or organisms; see MeSH scope note in Introduction; indexing policy: Manual 19.8.9; DF /biosyn or /BI\n ",
+        "HistoryNote": "66; used with Category D 1966-89; D8-9, D12-13 & D24 1990 forward\n ",
+        "OnlineNote": "search policy: Online Manual; use: main heading/BI or BI (SH) or SUBS APPLY BI\n ",
+        "TreeNumberList": {
+            "TreeNumber": [
+                {
+                    "TreeNumber": "Y08.040.010"
+                }
+            ]
+        },
+        "TreeNodeAllowedList": {
+            "TreeNodeAllowed": [
+                {
+                    "TreeNodeAllowed": "D06"
+                },
+                {
+                    "TreeNodeAllowed": "D08"
+                },
+                {
+                    "TreeNodeAllowed": "D09"
+                },
+                {
+                    "TreeNodeAllowed": "D12"
+                },
+                {
+                    "TreeNodeAllowed": "D13"
+                },
+                {
+                    "TreeNodeAllowed": "D23"
+                }
+            ]
+        },
+        "RecordOriginatorsList": {
+            "RecordOriginator": [
+                { }
+            ]
+        },
+        "ConceptList": {
+            "Concept": [
+                {
+                    "ConceptName": "biosynthesis",
+                    "ConceptRelationList": { },
+                    "ConceptUI": "M0030287",
+                    "PreferredConceptYN": "Y",
+                    "RelatedRegistryNumberList": { },
+                    "ScopeNote": "Used for the anabolic formation of chemical substances in organisms, in living cells, or by subcellular fractions.\n ",
+                    "SemanticTypeList": {
+                        "SemanticType": [
+                            {
+                                "SemanticTypeUI": "T169",
+                                "SemanticTypeName": "Functional Concept"
+                            }
+                        ]
+                    },
+                    "TermList": {
+                        "Term": [
+                            {
+                                "Abbreviation": "BI",
+                                "ConceptPreferredTermYN": "Y",
+                                "DateCreated": { },
+                                "EntryVersion": "BIOSYN",
+                                "IsPermutedTermYN": "N",
+                                "LexicalTag": "NON",
+                                "PrintFlagYN": "Y",
+                                "RecordPreferredTermYN": "Y",
+                                "String": "biosynthesis",
+                                "TermUI": "T060639",
+                                "ThesaurusIDlist": { }
+                            },
+                            {
+                                "ConceptPreferredTermYN": "N",
+                                "DateCreated": { },
+                                "IsPermutedTermYN": "N",
+                                "LexicalTag": "NON",
+                                "PrintFlagYN": "N",
+                                "RecordPreferredTermYN": "N",
+                                "String": "bioformation",
+                                "TermUI": "T060641",
+                                "ThesaurusIDlist": { }
+                            },
+                            {
+                                "ConceptPreferredTermYN": "N",
+                                "DateCreated": { },
+                                "IsPermutedTermYN": "N",
+                                "LexicalTag": "NON",
+                                "PrintFlagYN": "N",
+                                "RecordPreferredTermYN": "N",
+                                "String": "anabolism",
+                                "TermUI": "T060640",
+                                "ThesaurusIDlist": { }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+
+}
