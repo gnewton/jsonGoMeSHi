@@ -8,7 +8,7 @@ Example JSON
 ============
 
 * Base URL
-    {
+     {
     
         "Meta": {
             "MeSH_Version": "2014 MeSH",
@@ -39,5 +39,7 @@ Example JSON
         ]
     
     }
+
 * Descriptor Record
+  ** Quite large: see [here][https://github.com/gnewton/jsonGoMeSHi/Descriptor.md]
 
