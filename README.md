@@ -1,7 +1,7 @@
 jsonGoMeSHi
 ===========
 
-JSON REST Interface for MeSH data based on [jianGoMeSHi](https://github.com/gnewton/jianGoMeSHi)
+JSON REST Interface for MEDLINE/PubMed Medical Subject Headings (MeSH) XML data based on [jianGoMeSHi](https://github.com/gnewton/jianGoMeSHi)
 
 
 Web Service API
@@ -149,3 +149,6 @@ Note all URLs are examples only: the base URL is settable in jsonGoMeSHi
 
 
 
+Acknowledgement
+=============
+This work is a by-product of my graduate work at Carleton Univerity at [Dumontier Lab](http://dumontierlab.com/)
