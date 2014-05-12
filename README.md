@@ -19,9 +19,8 @@ Example JSON
 Note all URLs are examples only: the base URL is settable in jsonGoMeSHi
 
 * Base URL  http://hostname:port/mesh
-
+```
      {
-    
         "Meta": {
             "MeSH_Version": "2014 MeSH",
             "CopyrightAndLegal": "Copyright U.S. National Library of Medicine; U.S. National Library of Medicine is the creator, maintainer, and provider of this data",
@@ -51,6 +50,7 @@ Note all URLs are examples only: the base URL is settable in jsonGoMeSHi
         ]
     
     }
+```
 
 * Descriptor Record
   * See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/descriptor.json)
