@@ -64,7 +64,6 @@ Note all URLs are examples only: the base URL is settable in jsonGoMeSHi
 * Pharmacological action Record
 
      {
-     
          "Meta": {
              "MeSH_Version": "2014 MeSH",
              "CopyrightAndLegal": "Copyright U.S. National Library of Medicine; U.S. National Library of Medicine is the creator, maintainer, and provider of this data",
