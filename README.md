@@ -9,8 +9,8 @@ Web Service API
 * Base URL:
   Lists all REST nouns: `descriptor`, `qualifier`, `supplemental`, `pharmacological`, `tree`
 * For each of `descriptor`, `qualifier`, `supplemental`, `pharmacological`, behaviour is as follows:
-** `http://hostname:port/mesh/noun` - list all records for `noun`
-** `http://hostname:port/mesh/noun/ID` - list record ID for noun
+  * `http://hostname:port/mesh/noun` - list all records for `noun`
+  * `http://hostname:port/mesh/noun/ID` - list record ID for noun
 
 Example JSON
 ============
@@ -52,13 +52,13 @@ Note all URLs are examples only: the base URL is settable in jsonGoMeSHi
     }
 
 * Descriptor Record
-** See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/descriptor.json)
+  * See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/descriptor.json)
 
 * Qualifier Record
-** See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/qualifier.json)
+  * See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/qualifier.json)
 
 * Supplemental Record
-** See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/supplemental.json)
+  * See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/supplemental.json)
 
 * Pharmacological action Record
      {
