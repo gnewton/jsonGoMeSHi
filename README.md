@@ -1,7 +1,7 @@
 jsonGoMeSHi
 ===========
 
-JSON REST Interface for MEDLINE/PubMed Medical Subject Headings (MeSH) XML data based on [jianGoMeSHi](https://github.com/gnewton/jianGoMeSHi)
+JSON REST Interface for [MEDLINE/PubMed Medical Subject Headings (MeSH)](http://www.nlm.nih.gov/mesh/) XML data based on [jianGoMeSHi](https://github.com/gnewton/jianGoMeSHi)
 
 
 Web Service API
