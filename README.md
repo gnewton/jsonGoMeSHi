@@ -8,9 +8,10 @@ Web Service API
 ============
 * Base URL:
   Lists all REST nouns: `descriptor`, `qualifier`, `supplemental`, `pharmacological`, `tree`
-* For each of `descriptor`, `qualifier`, `supplemental`, `pharmacological`, behaviour is as follows:
+* For each of noun: `descriptor`, `qualifier`, `supplemental`, `pharmacological`, behaviour is as follows:
   * `http://hostname:port/mesh/noun` - list all records for `noun`
-  * `http://hostname:port/mesh/noun/ID` - list record ID for noun
+  * `http://hostname:port/mesh/noun/ID` - list record ID for `noun`
+* Note that descriptor and supplemental record lists are quite large: there is a [bug to add paging](https://github.com/gnewton/jsonGoMeSHi/issues/1) to these API calls
 
 Example JSON
 ============
