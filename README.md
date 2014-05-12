@@ -1,13 +1,13 @@
 jsonGoMeSHi
 ===========
 
-JSON REST Interface for MeSH data based on [jianGoMeSHi][https://github.com/gnewton/jainGoMeSHi]
+JSON REST Interface for MeSH data based on [jianGoMeSHi](https://github.com/gnewton/jainGoMeSHi)
 
 
 Example JSON
 ============
 
-* Base URL
+* Base URL  http://hostname:port/mesh
      {
     
         "Meta": {
@@ -41,5 +41,6 @@ Example JSON
     }
 
 * Descriptor Record
-  ** Quite large: see [here][https://github.com/gnewton/jsonGoMeSHi/Descriptor.md]
+  ** See [here](https://github.com/gnewton/jsonGoMeSHi/exampleJson/Descriptor.json)
+
 
