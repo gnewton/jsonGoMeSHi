@@ -9,8 +9,8 @@ Web Service API
 * Base URL:
   Lists all REST nouns: `descriptor`, `qualifier`, `supplemental`, `pharmacological`, `tree`
 * For each of `descriptor`, `qualifier`, `supplemental`, `pharmacological`, behaviour is as follows:
-  ** `http://hostname:port/mesh/noun` - list all records for `noun`
-  ** `http://hostname:port/mesh/noun/ID` - list record ID for noun
+** `http://hostname:port/mesh/noun` - list all records for `noun`
+** `http://hostname:port/mesh/noun/ID` - list record ID for noun
 
 Example JSON
 ============
