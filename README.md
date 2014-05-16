@@ -3,6 +3,14 @@ jsonGoMeSHi
 
 JSON REST Interface for [MEDLINE/PubMed Medical Subject Headings (MeSH)](http://www.nlm.nih.gov/mesh/) XML data based on [jianGoMeSHi](https://github.com/gnewton/jianGoMeSHi)
 
+Running Example of Web Service
+============
+[Example](http://s2.semanticscience.org:8080/mesh) of jsonGoMeSHi running at [Dumontier Lab](http://dumontierlab.com/)
+- [Descriptor record](http://s2.semanticscience.org:8080/mesh/descriptor/D000003)
+- [Qualifier record](http://s2.semanticscience.org:8080/mesh/qualifier/Q000032)
+- [Supplemental record](http://s2.semanticscience.org:8080/mesh/supplemental/C000009)
+- [Pharmacological action record](http://s2.semanticscience.org:8080/mesh/pharmacological/D000276)
+- [MeSH tree hierarchy](http://s2.semanticscience.org:8080/mesh/tree/C05.550.251.595)
 
 Web Service API
 ============
@@ -149,6 +157,9 @@ Note all URLs are examples only: the base URL is settable in jsonGoMeSHi
      }
 ```
 
+TODO
+===========
+- GET all Supplemental and Descriptor records is too long: implement paging for these Web Services
 
 Acknowledgement
 =============
