@@ -118,7 +118,6 @@ func GetTrees(w rest.ResponseWriter, req *rest.Request) {
 	//child := nd.Init()
 	//w.WriteJson(root)
 	//log.Println(root)
-	log.Printf("%+v\n", root)
 	w.WriteJson(newEnvelope(root.Children))
 	//log.Println(root.Children["D02"].Children["705"])
 	//w.WriteJson("hello")

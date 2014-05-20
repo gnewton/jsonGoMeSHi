@@ -93,8 +93,8 @@ func loadData()(error){
 	log.Println("Start Loading MeSH XML...")
 
 	////////////////
-	log.Println("\tLoading Supplemental MeSH XML from file: ", SUPPLEMENTAL_XML_FILE)
-	suppMap, err = jianGoMeSHi.SupplementalMapFromFile(SUPPLEMENTAL_XML_FILE)
+	log.Println("\tLoading Supplemental MeSH XML from file: ", *SUPPLEMENTAL_XML_FILE)
+	suppMap, err = jianGoMeSHi.SupplementalMapFromFile(*SUPPLEMENTAL_XML_FILE)
 	if err != nil{
 		return err
 	}
@@ -114,8 +114,8 @@ func loadData()(error){
 	}
 
 	////////////////
-	log.Println("\tLoading Pharmacological Action MeSH XML from file: ", PHARMACOLOGICAL_XML_FILE)
-	pharmMap, err = jianGoMeSHi.PharmacologicalMapFromFile(PHARMACOLOGICAL_XML_FILE)
+	log.Println("\tLoading Pharmacological Action MeSH XML from file: ", *PHARMACOLOGICAL_XML_FILE)
+	pharmMap, err = jianGoMeSHi.PharmacologicalMapFromFile(*PHARMACOLOGICAL_XML_FILE)
 	if err != nil{
 		return err
 	}
@@ -146,8 +146,8 @@ func loadData()(error){
 
 
 	////////////////
-	log.Println("\tLoading Qualifier MeSH XML from file:", QUALIFIER_XML_FILE)
-	qualMap, err = jianGoMeSHi.QualifierMapFromFile(QUALIFIER_XML_FILE)
+	log.Println("\tLoading Qualifier MeSH XML from file:", *QUALIFIER_XML_FILE)
+	qualMap, err = jianGoMeSHi.QualifierMapFromFile(*QUALIFIER_XML_FILE)
 	if err != nil{
 		return err
 	}
@@ -163,8 +163,8 @@ func loadData()(error){
 
 
 	////////////////
-	log.Println("\tLoading Descriptor MeSH XML from file: ", DESCRIPTOR_XML_FILE)
-	descMap, err = jianGoMeSHi.DescriptorMapFromFile(DESCRIPTOR_XML_FILE)
+	log.Println("\tLoading Descriptor MeSH XML from file: ", *DESCRIPTOR_XML_FILE)
+	descMap, err = jianGoMeSHi.DescriptorMapFromFile(*DESCRIPTOR_XML_FILE)
 	if err != nil{
 		return err
 	}
