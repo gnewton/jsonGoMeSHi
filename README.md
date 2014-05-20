@@ -3,6 +3,21 @@ jsonGoMeSHi
 
 JSON REST Interface for [MEDLINE/PubMed Medical Subject Headings (MeSH)](http://www.nlm.nih.gov/mesh/) XML data based on [jianGoMeSHi](https://github.com/gnewton/jianGoMeSHi)
 
+Usage
+============
+```
+$ ./jsonGoMeSHi --help
+Usage of ./jsonGoMeSHi:
+  -D="testData/desc2014_29records.xml.bz2": Full path to descriptor XML file
+  -P="testData/pa2014_8records.xml": Full path to pharmacological supplemental XML file
+  -Q="testData/qual2014_8records.xml.bz2": Full path to qualifier XML file
+  -S="testData/supp2014_4records.xml": Full path to supplemental XML file
+  -b="/mesh": Base path for web service URL
+  -h="localhost": Host name for web service
+  -p="8080": Port name for web service
+$
+```
+
 Running Example of Web Service
 ============
 [Example](http://s2.semanticscience.org:8080/mesh) of jsonGoMeSHi running at [Dumontier Lab](http://dumontierlab.com/)
