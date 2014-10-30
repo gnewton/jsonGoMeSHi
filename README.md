@@ -1,4 +1,4 @@
-jsonGoMeSHi
+jsongomesh
 ===========
 
 JSON REST Interface for [MEDLINE/PubMed Medical Subject Headings (MeSH)](http://www.nlm.nih.gov/mesh/) XML data based on [gomesh](https://github.com/gnewton/gomesh)
