@@ -1,13 +1,13 @@
 jsonGoMeSHi
 ===========
 
-JSON REST Interface for [MEDLINE/PubMed Medical Subject Headings (MeSH)](http://www.nlm.nih.gov/mesh/) XML data based on [jianGoMeSHi](https://github.com/gnewton/jianGoMeSHi)
+JSON REST Interface for [MEDLINE/PubMed Medical Subject Headings (MeSH)](http://www.nlm.nih.gov/mesh/) XML data based on [gomesh](https://github.com/gnewton/gomesh)
 
 Usage
 ============
 ```
-$ ./jsonGoMeSHi --help
-Usage of ./jsonGoMeSHi:
+$ ./jsongomesh --help
+Usage of ./jsongomesh:
   -D="testData/desc2014_29records.xml.bz2": Full path to descriptor XML file
   -P="testData/pa2014_8records.xml": Full path to pharmacological supplemental XML file
   -Q="testData/qual2014_8records.xml.bz2": Full path to qualifier XML file
@@ -20,7 +20,7 @@ $
 
 Running Example of Web Service
 ============
-[Example](http://s2.semanticscience.org:8080/mesh) of jsonGoMeSHi running at [Dumontier Lab](http://dumontierlab.com/)
+[Example](http://s2.semanticscience.org:8080/mesh) of jsongomesh running at [Dumontier Lab](http://dumontierlab.com/)
 - [Descriptor record](http://s2.semanticscience.org:8080/mesh/descriptor/D000003)
 - [Qualifier record](http://s2.semanticscience.org:8080/mesh/qualifier/Q000032)
 - [Supplemental record](http://s2.semanticscience.org:8080/mesh/supplemental/C000009)
@@ -34,12 +34,12 @@ Web Service API
 * For each of noun: `descriptor`, `qualifier`, `supplemental`, `pharmacological`, behaviour is as follows:
   * `http://hostname:port/mesh/noun` - list all records for `noun`
   * `http://hostname:port/mesh/noun/ID` - list record ID for `noun`
-* Note that descriptor and supplemental record lists are quite large: there is a [bug to add paging](https://github.com/gnewton/jsonGoMeSHi/issues/1) to these API calls
+* Note that descriptor and supplemental record lists are quite large: there is a [bug to add paging](https://github.com/gnewton/jsongomesh/issues/1) to these API calls
 
 Example JSON
 ============
 
-Note all URLs are examples only: the base URL is settable in jsonGoMeSHi
+Note all URLs are examples only: the base URL is settable in jsongomesh
 
 * Base URL  http://hostname:port/mesh
 ```
@@ -76,13 +76,13 @@ Note all URLs are examples only: the base URL is settable in jsonGoMeSHi
 ```
 
 * Descriptor Record
-  * See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/descriptor.json)
+  * See [here](https://github.com/gnewton/jsongomesh/blob/master/exampleJson/descriptor.json)
 
 * Qualifier Record
-  * See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/qualifier.json)
+  * See [here](https://github.com/gnewton/jsongomesh/blob/master/exampleJson/qualifier.json)
 
 * Supplemental Record
-  * See [here](https://github.com/gnewton/jsonGoMeSHi/blob/master/exampleJson/supplemental.json)
+  * See [here](https://github.com/gnewton/jsongomesh/blob/master/exampleJson/supplemental.json)
 
 * Pharmacological action Record
 ```
