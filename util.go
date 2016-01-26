@@ -98,8 +98,8 @@ func loadData() error {
 	for _, supp := range suppMap {
 		newEntry := new(gomesh.IdEntry)
 		newEntry.Id = supp.SupplementalRecordUI
-		//newEntry.Url = BASE_URL + "/" + SUPPLEMENTAL + "/" + newEntry.Id
-		newEntry.Url = SUPPLEMENTAL + "/" + newEntry.Id
+		newEntry.Url = BASE_URL + "/" + SUPPLEMENTAL + "/" + newEntry.Id
+		//newEntry.Url = SUPPLEMENTAL + "/" + newEntry.Id
 		suppSlice[index] = newEntry
 		index += 1
 
